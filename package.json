@@ -12,7 +12,8 @@
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint": "next lint",
-    "update-types": "npx supabase gen types typescript --project-id \"hzcgbsakzagvgfuektjb\" > types/supabase.ts"
+    "update-types": "npx supabase gen types typescript --project-id \"hzcgbsakzagvgfuektjb\" > types/supabase.ts",
+    "postinstall": "npx update-browserslist-db@latest"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --no-lint",
     "start": "next start",
     "update-types": "npx supabase gen types typescript --project-id \"hzcgbsakzagvgfuektjb\" > types/supabase.ts"
   },

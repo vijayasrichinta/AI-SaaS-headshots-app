@@ -1,84 +1,70 @@
-# 👨‍💼 [Headshot AI](https://headshots-starter.vercel.app/) – Professional AI Headshots
+# 👨‍💼 Headshot AI - Professional AI Headshots
 
-Headshot AI lets you generate professional AI headshots in minutes. This open-source project is designed to help developers and makers quickly build AI-powered headshot applications.
+[Live Demo](https://headshots-starter.vercel.app/)  
 
-Use it as a starting point: fork the code, modify it, and make it your own.
+Headshot AI is an AI-powered app that generates professional headshots in minutes. Upload a few photos, and the app creates high-quality AI headshots automatically.  
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleap-ai%2Fheadshots-starter%2Ftree%2Fmain)
-
----
-
-## How It Works
-
-* Generates professional AI headshots from user-provided images.
-* Uses AI models to learn the style of input images.
-* Supports a credit-based or optional email notification system.
-* Built with Next.js, Supabase (DB & Auth), Tailwind CSS, and Vercel for deployment.
-
-Live demo **[here](https://getheadshots.ai)**.
+This project is open-source and serves as a starting point for developers and makers to build AI applications quickly.
 
 ---
 
-## Running Locally
+## 🚀 Live Demo
 
-### 1. Clone the repository
+[![Headshot AI Demo](https://raw.githubusercontent.com/vijayasrichinta/headshots-starter-clone/main/public/new-demo.png)](https://headshots-starter.vercel.app/)
+
+Try the app instantly without installation. Upload a few photos, then generate headshots in seconds.
+
+---
+
+## 🔧 How It Works
+
+The app is powered by:
+
+- **Next.js** – Frontend and landing page framework
+- **Supabase** – Database and authentication
+- **Astria API** – AI model inference
+- **Resend (Optional)** – Email notifications when headshots are ready
+- **Stripe (Optional)** – Billing and credits for premium usage
+- **Shadcn + Tailwind CSS** – UI and styling
+- **Vercel** – Deployment
+
+---
+
+## 📸 Example Results
+
+**Good Results:**
+
+[![Good Results](https://raw.githubusercontent.com/vijayasrichinta/headshots-starter-clone/main/public/good_results.png)](https://headshots-starter.vercel.app/)
+
+**Avoid Multiple Faces in Input Images:**
+
+[![Multiple Faces Warning](https://raw.githubusercontent.com/vijayasrichinta/headshots-starter-clone/main/public/multiple_faces.png)](https://headshots-starter.vercel.app/)
+
+---
+
+## ⚡ Quick Start (Local Setup)
+
+1. **Clone your repository:**
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-```
+git clone {{your-repo-name}}
+cd {{your-repo-name}}
+````
 
----
-
-### 2. Install dependencies
-
-Using npm:
+2. **Install dependencies:**
 
 ```bash
 npm install
-```
-
-Or yarn:
-
-```bash
+# or
 yarn
 ```
 
----
+3. **Configure Supabase Magic Link Auth**
 
-### 3. Set up environment variables
+In your Supabase dashboard:
 
-Create a `.env.local` file and configure the following:
-
-```text
-# API Key for AI model
-NEXT_PUBLIC_API_KEY=your_api_key
-
-# Webhook secret for model training callbacks
-APP_WEBHOOK_SECRET=your-webhook-secret
-
-# Deployment URL
-DEPLOYMENT_URL=https://your-hosted-url
-
-# Optional: enable announcement bar
-NEXT_PUBLIC_ANNOUNCEMENT_ENABLED=true
-NEXT_PUBLIC_ANNOUNCEMENT_MESSAGE="Your announcement message here"
-
-# Optional: email notifications
-RESEND_API_KEY=your-resend-api-key
-
-# Optional: Stripe payments for credit system
-STRIPE_SECRET_KEY=your-stripe-secret-key
-STRIPE_WEBHOOK_SECRET=your-stripe-webhook-secret
-NEXT_PUBLIC_STRIPE_IS_ENABLED=false
-```
-
----
-
-### 4. Magic Link Authentication (Supabase)
-
-1. Go to your Supabase project dashboard → Authentication → Email Templates.
-2. Add the following template:
+* Go to Authentication → Email Templates → Magic Link
+* Paste:
 
 ```html
 <h2>Magic Link</h2>
@@ -86,58 +72,81 @@ NEXT_PUBLIC_STRIPE_IS_ENABLED=false
 <p><a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email">Log In</a></p>
 ```
 
-3. Make sure your **Site URL** and **Redirect URL** are correctly configured:
+* Configure **Site URL** and **Redirect URLs**:
 
 ```
-Site URL: https://your-app-url
-Redirect URL: https://your-app-url/**
+Site URL: https://headshots-starter.vercel.app
+Redirect URL: https://headshots-starter.vercel.app/**
 ```
 
----
+4. **Setup `.env.local`**
 
-### 5. Start the development server
+Add the following variables:
+
+```text
+NEXT_PUBLIC_ASTRIA_API_KEY=your_astria_api_key
+APP_WEBHOOK_SECRET=any_url_friendly_secret
+DEPLOYMENT_URL=https://your-deployed-url
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
+NEXT_PUBLIC_ANNOUNCEMENT_ENABLED=true
+NEXT_PUBLIC_ANNOUNCEMENT_MESSAGE="Your announcement here"
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+NEXT_PUBLIC_STRIPE_IS_ENABLED=false
+```
+
+5. **Start development server:**
 
 ```bash
 npm run dev
-```
-
-Or with yarn:
-
-```bash
+# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the app running.
+Visit [http://localhost:3000](http://localhost:3000) to see the running app.
 
 ---
 
-## Tips for Best Results
+## 💡 Tips for Best AI Results
 
-* Use clear, close-up images with only one person in the frame.
-* Avoid sunglasses, hats, or other accessories.
-* Make sure faces are centered and clearly visible.
-* Use consistent aspect ratios (e.g., 512x512, 1024x1024) for input images.
-* Avoid multiple people in a single image.
-
-Following these steps ensures the AI generates high-quality headshots.
+* Use **close-up face photos** with one person per frame
+* Avoid sunglasses, hats, or accessories
+* Crop and center the face if necessary
+* Keep all sample images **1:1 aspect ratio** (e.g., 512x512, 1024x1024)
+* Add `"double torso, totem pole"` to the negative prompt to reduce distortion
 
 ---
 
-## Optional Features
+## 🖼 Additional Use-Cases
 
-* **Email notifications** when headshots are ready (requires Resend API key).
-* **Credit-based billing** using Stripe (optional).
-* Can be adapted for other AI use-cases like avatars, product shots, or illustrations.
+Headshot AI can be adapted for:
+
+* **AI Avatars**
+  ![Anime Demo](https://raw.githubusercontent.com/vijayasrichinta/headshots-starter-clone/main/public/anime.png)
+
+  * Anime portraits, stylized avatars
+
+* **Pet Portraits**
+  ![Pet Demo](https://raw.githubusercontent.com/vijayasrichinta/headshots-starter-clone/main/public/pet.png)
+
+* **Product Shots & Icons**
+  ![Product Demo](https://raw.githubusercontent.com/vijayasrichinta/headshots-starter-clone/main/public/products.png)
+  ![Icon Demo](https://raw.githubusercontent.com/vijayasrichinta/headshots-starter-clone/main/public/icons.png)
+
+& more!
 
 ---
 
-## Contributing
+## 📝 Contributing
 
 Contributions are welcome!
 
-* Open an issue for suggestions or improvements.
-* Create a new branch and open a pull request to the `dev` branch.
+* Open an issue for suggestions or improvements
+* Create a new branch and open a pull request targeting `dev`
 
 ---
 
+## 📚 Resources & Support
 
+* **Support Email:** [support@example.com](mailto:support@example.com)
+* **Documentation:** [Headshot AI Docs](https://headshots-starter.vercel.app/)

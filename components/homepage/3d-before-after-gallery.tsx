@@ -13,6 +13,7 @@ interface GalleryItem {
 }
 
 export default function ThreeDBeforeAfterGallery() {
+  
   const [activeIndex, setActiveIndex] = useState(0)
   const [isFlipping, setIsFlipping] = useState(false)
   const [direction, setDirection] = useState(0) // -1 for left, 1 for right
